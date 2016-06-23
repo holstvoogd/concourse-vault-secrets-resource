@@ -4,6 +4,7 @@ set -e -x
 
 export GOOS=linux
 export GOARCH=amd64
+export CGO_ENABLED=0
 
 if [ "${1}" != "" -a "${2}" != "" ]; then
   IN=$1
@@ -18,7 +19,7 @@ fi
 
 echo "Compiling..."
 go get github.com/hashicorp/vault/api &&\
-go build -o $OUT/resource/vault-secrets -ldflags "-s -extldflags '-static'" $IN/vault-secrets.go &&\
+go build -o $OUT/resource/vault-secrets -ldflags "-s -extldflags '-static'" $IN/vault-secrets.go
 
 echo "Compiling done! Linking commands..."
 cd $OUT/resource
