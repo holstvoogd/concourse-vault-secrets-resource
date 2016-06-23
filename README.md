@@ -13,7 +13,6 @@ This is a work in progress. Use at your own risk.
   "source": {
     "vault_uri": "...",
     "app_id": "..."
-    "user_id_variable": "VAULT_USER_ID" // Optional
   }
 }
 ```

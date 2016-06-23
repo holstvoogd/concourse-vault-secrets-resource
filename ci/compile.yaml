@@ -6,13 +6,13 @@ image_resource:
     tag: 1.6.2
 
 inputs:
-  - name: toolbox-repo
+  - name: concourse-vault-repo
 
 outputs:
-  - name: toolbox-bin
+  - name: concourse-vault-bin
 
 run:
-  path: toolbox-repo/ci/compile
+  path: concourse-vault-repo/ci/compile
   args:
-    - toolbox-repo
-    - toolbox-bin
+    - concourse-vault-repo
+    - concourse-vault-bin
