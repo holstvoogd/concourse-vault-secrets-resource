@@ -1,0 +1,29 @@
+#!/bin/sh
+
+set -e -x
+
+export GOOS=linux
+export GOARCH=amd64
+
+if [ "${1}" != "" -a "${2}" != "" ]; then
+  IN=$1
+  OUT=$2
+  if [ $IN != $OUT ]; then
+    mkdir -p $OUT/resource
+    cp $IN/Dockerfile $OUT
+  fi
+else
+  echo "Usage: $0 SRCPATH BINPATH"
+fi
+
+echo "Compiling..."
+go get github.com/hashicorp/vault/api &&\
+go build -o $OUT/resource/vault-secrets -ldflags "-s -extldflags '-static'" $IN/vault-secrets.go &&\
+
+echo "Compiling done! Linking commands..."
+cd $OUT/resource
+ln -nsf /opt/resource/vault-secrets in
+ln -nsf /opt/resource/vault-secrets check
+ln -nsf /opt/resource/vault-secrets out
+
+echo "All done!"

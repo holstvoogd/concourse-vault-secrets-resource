@@ -1,0 +1,4 @@
+{
+  "source": {"vault_uri": "http://localhost:", "app_id": "koekjes" },
+  "version": {"expires_at": "123456"}
+}

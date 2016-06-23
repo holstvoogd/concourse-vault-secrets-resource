@@ -1,0 +1,7 @@
+{
+  "source": {"vault_uri": "http://localhost:8200", "app_id": "app_id_test" },
+  "version": {"expires_at": "123456"},
+  "params": {
+    "foo": "secret/my-app/some-credentials"
+  }
+}
